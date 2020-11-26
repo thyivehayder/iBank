@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iBank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-page">
+        <h1 class="text-center">Welcome to iBank</h1>
+
+        <div class="login">
+            <h3>login</h3>
+            <input type="email" name="" id="" class="form-control" placeholder="Email">
+            <br>
+            <input type="password" name="" id="" class="form-control" placeholder="Password">
+            <br>
+            <button id="button" class="btn btn-success">Enter</button>
+        </div>
+    </div>
+
+    <div id="transaction-page">
+       
+        <div class="row">
+            <div class="col-md-4">
+                <div class="back-color1 css-style1">
+                <h2>Deposit</h2>
+                <h5>$ <span id="have-taka">00</span></h5>
+               </div>
+               
+          </div>
+            <div class="col-md-4">
+               
+                    <div class="back-color2 css-style1">
+                        <h2>Withdraw</h2>
+                        <h5>$<span id="have-withdraw">00</span></h5>
+               
+                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="back-color3 css-style1">
+                    <h2>Balance</h2>
+                    <h5>$ <span id="balance">1240</span> </h5>
+                </div>
+            </div>
+        </div>
+
+      <div class="row">
+          <div class="col-md-6">
+              <div class="login">
+                  <h4>Deposit</h4>
+                  <input id="depositAmount" class="form-control" placeholder="$ You want to Deposit" type="text">
+                  <br>
+                  <button id="depositButton" class="btn btn-success">Deposit</button>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="login">
+                  <h4>Withdraw</h4>
+                  <input id="withdrawAmount" class="form-control" placeholder="$ You want to Withdraw" type="text">
+                  <br>
+                  <button id="withdrawButton" class="btn btn-success">Withdraw</button>
+              </div>
+          </div>
+      </div>
+       
+    </div>
+
+    <script>
+        //login enter button event listener 
+        document.getElementById('button').addEventListener('click',function () {
+           document.getElementById('login-page').style.display='none'
+           document.getElementById('transaction-page').style.display='block'
+        })
+
+
+        // deposit button event listener
+        document.getElementById('depositButton').addEventListener('click',function () {
+            let depositTaka=getInput('depositAmount')
+           updateSpanText('have-taka',depositTaka)
+           updateSpanText('balance',depositTaka)
+           document.getElementById('depositAmount').value = '';
+        })
+
+        // withdraw button event listener
+        document.getElementById('withdrawButton').addEventListener('click',function () {
+             let withdrawTaka=getInput('withdrawAmount')
+            
+            updateSpanText('have-withdraw',withdrawTaka)
+           updateSpanText('balance',-1*withdrawTaka)
+           
+           document.getElementById('withdrawAmount').value = '';
+            
+        })
+       function getInput(id) {
+          let inputTaka= document.getElementById(id).value
+          inputTaka=parseFloat(inputTaka)
+          return inputTaka
+       }
+       function updateSpanText(id,inputTaka) {
+        let money1=document.getElementById(id).innerText
+               money1=parseFloat(money1)
+               let totalMoney=inputTaka+money1
+               document.getElementById(id).innerText=totalMoney 
+       }
+
+
+
+
+
+        // //deposit button event listener 
+        // document.getElementById('depositButton').addEventListener('click',function () {
+        //     update('have-taka','depositAmount')
+        //     update('balance','depositAmount')
+        //     document.getElementById('depositAmount').value='';
+           
+        // })
+        
+
+        // // withdraw button event listener 
+        // document.getElementById('withdraw').addEventListener('click',function () {
+        //     update('have-withdraw','withdraw-amount',)
+           
+        //     update('balance','withdraw-amount')
+            
+            
+        // })
+
+       
+
+        // function update(id1,id2) {
+        //         let money1=document.getElementById(id1).innerText
+        //         money1=parseFloat(money1)
+        //         let money2=document.getElementById(id2).value
+        //         money2=parseFloat(money2)
+        //         let totalMoney=money1+money2
+        //         document.getElementById(id1).innerText=totalMoney
+                
+        //     }
+
+       
+        
+        
+
+    </script>
+</body>
+</html>

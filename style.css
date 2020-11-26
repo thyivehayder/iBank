@@ -1,0 +1,25 @@
+body{
+    padding: 100px;
+}
+.login{
+    margin-top: 50px;
+    padding: 40px;
+    box-shadow: 5px 5px 10px grey;
+}
+#transaction-page{
+    display: none;
+}
+.back-color1{
+    background-color: slateblue;
+}
+.back-color2{
+    background-color: lightsalmon;
+}
+.back-color3{
+    background-color: orange;
+}
+.css-style1{
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+}
