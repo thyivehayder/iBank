@@ -79,19 +79,32 @@
         // deposit button event listener
         document.getElementById('depositButton').addEventListener('click',function () {
             let depositTaka=getInput('depositAmount')
-           updateSpanText('have-taka',depositTaka)
-           updateSpanText('balance',depositTaka)
-           document.getElementById('depositAmount').value = '';
+
+            if (depositTaka<0) {
+                alert('Deposit Amount Can not be negative')
+                document.getElementById('depositAmount').value = '';
+            } else {
+                updateSpanText('have-taka',depositTaka)
+                updateSpanText('balance',depositTaka)
+                document.getElementById('depositAmount').value = '';
+            }
+          
         })
 
         // withdraw button event listener
         document.getElementById('withdrawButton').addEventListener('click',function () {
              let withdrawTaka=getInput('withdrawAmount')
-            
-            updateSpanText('have-withdraw',withdrawTaka)
-           updateSpanText('balance',-1*withdrawTaka)
+             if (withdrawTaka<0) {
+                 alert('Withdraw amount can not be negative')
+                 document.getElementById('withdrawAmount').value = '';
+             } else {
+                updateSpanText('have-withdraw',withdrawTaka)
+                 updateSpanText('balance',-1*withdrawTaka)
            
-           document.getElementById('withdrawAmount').value = '';
+                 document.getElementById('withdrawAmount').value = '';
+             }
+            
+            
             
         })
        function getInput(id) {
